@@ -5,9 +5,10 @@
  */
 package salarycalculator;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import model.Employee;
 import model.WorkingTime;
@@ -17,31 +18,36 @@ import model.WorkingTime;
  * @author Kelly
  */
 public class EmployeeBuilder {
-    public ArrayList<Employee> getEmployees(String ruta) { 
+
+    public ArrayList<Employee> getEmployees(String filename) {
         ArrayList<Employee> employees = new ArrayList<>();
-        try {
-            Files.lines(Paths.get(ruta)).forEach((String line) -> {
+
+        try (InputStream inputStream = getClass().getResourceAsStream(filename);
+                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+            String line = reader.readLine();
+            while (line != null) {
                 String[] data = line.split("=");
                 Employee employee = new Employee(data[0]);
-                this.saveSchedule(data[1], employee.getSchedule());
-                employees.add(employee);         
-            });
-            
+                this.saveSchedule(data[1],
+                        employee.getSchedule());
+                employees.add(employee);
+                line = reader.readLine();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
         return employees;
     }
-    
-    public void saveSchedule(String data, ArrayList<WorkingTime> schedule){
+
+    public void saveSchedule(String data, ArrayList<WorkingTime> schedule) {
         String[] working = data.split(",");
-        
-        for(String dayInfo: working){
+
+        for (String dayInfo : working) {
             String[] hours = dayInfo.split("-");
-            String day = hours[0].substring(0,2);
+            String day = hours[0].substring(0, 2);
             String start = hours[0].substring(2);
             schedule.add(new WorkingTime(day, start, hours[1]));
         }
     }
-   
+
 }

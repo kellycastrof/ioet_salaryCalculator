@@ -33,7 +33,7 @@ public class SalaryCalculator {
      */
     public static void main(String[] args) {
         SalaryCalculator calculator = new SalaryCalculator();
-        ArrayList<Employee> employees = calculator.eb.getEmployees("src/files/employees.txt");
+        ArrayList<Employee> employees = calculator.eb.getEmployees("employees.txt");
         calculator.calculateSalary(employees);
     }
     
