@@ -18,7 +18,12 @@ import model.WorkingTime;
  * @author Kelly
  */
 public class EmployeeBuilder {
-
+    
+    /**
+     * Read the txt file and return an list with all the employees
+     * @param filename name of the txt file that contains all information -- employees.txt
+     * @return ArrayList of Employee with all the employees in the txt file
+     */
     public ArrayList<Employee> getEmployees(String filename) {
         ArrayList<Employee> employees = new ArrayList<>();
 
@@ -38,7 +43,12 @@ public class EmployeeBuilder {
         }
         return employees;
     }
-
+    
+    /**
+     * Save all the working time in the ArrayList of the employee
+     * @param data the information about the working time of an employee
+     * @param schedule the ArrayList of the employee with their working time
+     */
     public void saveSchedule(String data, ArrayList<WorkingTime> schedule) {
         String[] working = data.split(",");
 

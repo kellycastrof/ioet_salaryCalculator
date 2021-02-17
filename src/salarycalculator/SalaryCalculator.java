@@ -36,7 +36,10 @@ public class SalaryCalculator {
         ArrayList<Employee> employees = calculator.eb.getEmployees("employees.txt");
         calculator.calculateSalary(employees);
     }
-    
+    /**
+     * Method that calculate the salary for all the employees in the txt file
+     * @param employees ArrayList of all employees
+     */
     public void calculateSalary(ArrayList<Employee> employees){
         for(Employee emp : employees){
             double salary= calculateSalaryEmployee(emp);
@@ -44,7 +47,11 @@ public class SalaryCalculator {
             emp.showSalary();
         }
     }
-    
+    /**
+     * Calculate the salary for an specific employee according with their working time
+     * @param employee the current employee
+     * @return salary for the specific employee
+     */
     public double calculateSalaryEmployee(Employee employee){
         double salary =0.0;
         for(WorkingTime time: employee.getSchedule()){
@@ -54,6 +61,12 @@ public class SalaryCalculator {
         return salary;
     }
     
+    /**
+     * Return the amount for an specific working time
+     * @param key  the timestamp for the current working time
+     * @param time the working time
+     * @return the payment for the working time
+     */
     public double getAmountPerDay(String key, WorkingTime time){
         if(key==null || time.getTimeIn()==null || time.getTimeOut()==null){
             return 0.0;
@@ -68,11 +81,23 @@ public class SalaryCalculator {
         
     }
     
-    
+    /**
+     * The method tells us if the day is a weekday or if it is on the weekend
+     * @param day day of the working time
+     * @return boolean: true if the day belongs to weekend 
+     */
     public boolean isWeekend(String day){
         return (day.equals("SA") || day.equals("SU"));
     }
     
+    /**
+     * Verify if a specific working time is in the timestamp
+     * @param start time for the timestamp of the ScheduleTable
+     * @param end time for the timestamp of the ScheduleTable
+     * @param employeeIn entry time of the employee
+     * @param employeeOut departure time of the employee
+     * @return boolean: true if the working time belongs to timestamp or false if it doesn't
+     */
     public boolean isInTimeStamp(LocalTime start, LocalTime end, LocalTime employeeIn, LocalTime employeeOut){
         if(employeeIn == null || employeeOut==null) 
             return false;
@@ -88,7 +113,11 @@ public class SalaryCalculator {
         return withStart && withEnd;
     }
     
-    
+    /**
+     * 
+     * @param time working time of the employee
+     * @return the timestamp for the specific working time; null if it does not exist
+     */
     public String belongsRange(WorkingTime time){
         for(String timestamp: hours){
             String[] timeArray = timestamp.split("-");

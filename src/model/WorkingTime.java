@@ -20,13 +20,12 @@ public class WorkingTime {
         this.timeIn = getHour(start);
         this.timeOut = getHour(end);
     }
-
     
-    public double getTimestamp(){
-        return 0.0;
-    }
-    
-    
+    /**
+     * Convert a time string in LocalTime
+     * @param time an hour interval
+     * @return LocalTime with the time in the argument
+     */
     public LocalTime getHour(String time){
         try{
             String[] data = time.split(":");

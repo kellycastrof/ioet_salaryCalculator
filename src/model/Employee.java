@@ -49,7 +49,9 @@ public class Employee {
     public String toString() {
         return "Employee{" + "name=" + name + ", salary=" + salary + ", schedule=" + schedule + '}';
     }
-    
+    /**
+     * Show the salary of the employee
+     */
     public void showSalary(){
         System.out.println("The amount to pay "+ this.name +" is: "+ this.salary+ " USD.");
     }

@@ -25,13 +25,18 @@ public class ScheduleTable {
         hours = new ArrayList<>(Arrays.asList("00:01-09:00", "09:01-18:00","18:01-00:00" ));
     }
     
+    /**
+     * Fill the HashMap for weekend
+     */
     public static void getWeekend(){
         paymentWeekend.put("00:01-09:00",30.0);
         paymentWeekend.put("09:01-18:00",20.0);
         paymentWeekend.put("18:01-00:00",25.0);
         
     }
-    
+    /**
+     * Fill the HashMap for weekdays
+     */
     public static void getWeekday(){
         paymentWeekday.put("00:01-09:00",25.0);
         paymentWeekday.put("09:01-18:00",15.0);
