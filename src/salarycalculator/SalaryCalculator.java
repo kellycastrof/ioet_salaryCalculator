@@ -35,7 +35,6 @@ public class SalaryCalculator {
         SalaryCalculator calculator = new SalaryCalculator();
         ArrayList<Employee> employees = calculator.eb.getEmployees("src/files/employees.txt");
         calculator.calculateSalary(employees);
-        System.out.println("End of program");
     }
     
     public void calculateSalary(ArrayList<Employee> employees){
