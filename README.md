@@ -24,8 +24,8 @@ The program loads the information in the txt file, creates the Employee objects 
 
 ## How to start
 ```
-git clone https://github.com/kellycastrof/ioet_salaryCalculator.git
-cd SalaryCalculator/dist
+git clone https://github.com/kellycastrof/salaryCalculator.git
+cd salaryCalculator/dist
 java -jar SalaryCalculator.jar
 ```
 
